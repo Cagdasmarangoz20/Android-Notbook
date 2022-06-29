@@ -3,8 +3,11 @@ package com.cagdasmarangoz.notes.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cagdasmarangoz.notes.*
@@ -19,6 +22,8 @@ class MainActivity : AppCompatActivity(), NoteClickInterface, NoteClickDeleteInt
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        noteSetting()
         notesRv= findViewById(R.id.idRVNotes)
         addFAB= findViewById(R.id.idFABAddNote)
         notesRv.layoutManager=LinearLayoutManager(this)
@@ -51,5 +56,37 @@ class MainActivity : AppCompatActivity(), NoteClickInterface, NoteClickDeleteInt
         viewModel.deleteNote(note)
         Toast.makeText(this, "${note.noteTitle} Deleted", Toast.LENGTH_SHORT).show()
     }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_top,menu)
+
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.idSetting -> {
+                val intent = Intent(this,SettingsActivity::class.java)
+                startActivity(intent)
+            }
+        }
+
+
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun noteSetting(){
+         val preferenceManager=PreferenceManager.getDefaultSharedPreferences(this)
+
+        val darkMode = preferenceManager.getBoolean("darkMode",false)
+
+        if (darkMode){
+            setTheme(R.style.ThemeDark)
+        }else{
+            setTheme(R.style.ThemeLight)
+        }
+    }
+
+
 
 }

@@ -7,6 +7,10 @@
         <entry key="..\:/Users/maran/AndroidStudioProjects/notes/app/src/main/res/layout/activity_add_edit_note.xml" value="0.2259963768115942" />
         <entry key="..\:/Users/maran/AndroidStudioProjects/notes/app/src/main/res/layout/activity_main.xml" value="0.20742753623188406" />
         <entry key="..\:/Users/maran/AndroidStudioProjects/notes/app/src/main/res/layout/note_rv_item.xml" value="0.20742753623188406" />
+        <entry key="..\:/Users/maran/AndroidStudioProjects/notes/app/src/main/res/layout/note_rv_item_grid.xml" value="0.264" />
+        <entry key="..\:/Users/maran/AndroidStudioProjects/notes/app/src/main/res/menu/menu_top.xml" value="0.275" />
+        <entry key="..\:/Users/maran/AndroidStudioProjects/notes/app/src/main/res/menu/notes_menu.xml" value="0.275" />
+        <entry key="..\:/Users/maran/AndroidStudioProjects/notes/app/src/main/res/xml/root_preferences.xml" value="0.264" />
       </map>
     </option>
   </component>
