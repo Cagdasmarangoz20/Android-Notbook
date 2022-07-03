@@ -9,4 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="balack_shadde_1">#0e2433</color>
     <color name="balack_shadde_2">#1C4966</color>
+    <color name="colorPrimary">#0e2433</color>
+    <color name="colorPrimaryDark">#1C4966</color>
+    <color name="colorAccent">#1C4966</color>
 </resources>

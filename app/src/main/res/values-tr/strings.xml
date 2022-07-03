@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">notes</string>
+    <string name="note_deleted">%1$s Silindi</string>
+    <string name="setting">Ayarlar</string>
+    <string name="Dark">Koyu Mod</string>
+    <string name="NoteTitle">Not Başlığı</string>
+    <string name="TimeStamp">Zaman</string>
+    <string name="NoteDescription">Not Açıklaması</string>
+</resources>

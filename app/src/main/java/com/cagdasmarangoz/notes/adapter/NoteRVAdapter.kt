@@ -15,7 +15,7 @@ class NoteRVAdapter(
     val noteClickDeleteInterface: NoteClickDeleteInterface
 
 ) :RecyclerView.Adapter<NoteRVAdapter.ViewHolder>() {
-    private val allNote=ArrayList<Note>()
+    private var allNote=ArrayList<Note>()
     inner class  ViewHolder(itemView:View):RecyclerView.ViewHolder(itemView){
         val noteTV = itemView.findViewById<TextView>(R.id.idTVNoteTitle)
         val timeTV = itemView.findViewById<TextView>(R.id.idTVTimeStamp)
@@ -44,6 +44,10 @@ class NoteRVAdapter(
     fun updateList(newList: List<Note>){
         allNote.clear()
         allNote.addAll(newList)
+        notifyDataSetChanged()
+    }
+    fun setData(newData: List<Note>){
+        allNote = newData as ArrayList<Note>
         notifyDataSetChanged()
     }
 }

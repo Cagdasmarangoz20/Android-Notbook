@@ -2,6 +2,7 @@ package com.cagdasmarangoz.notes.database
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import java.util.concurrent.Flow
 
 @Dao
 interface NotesDao {
@@ -13,5 +14,8 @@ interface NotesDao {
     suspend fun delete(note: Note)
 
     @Query("Select * From notesTable order by id ASC")
-    fun getAllNote():LiveData<List<Note>>
+    suspend fun getAllNote():List<Note>
+
+    @Query("SELECT * FROM notesTable WHERE title LIKE '%' || :searchQuery || '%' OR description LIKE '%' || :searchQuery ||  '%'")
+    suspend fun searchDatabase(searchQuery:String): List<Note>
 }
