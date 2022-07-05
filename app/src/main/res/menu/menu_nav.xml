@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view"
+    >
+    <item
+        android:id="@+id/idHome"
+        android:title="Home"
+        android:icon="@drawable/ic_home"/>
+    <item
+        android:id="@+id/idSetting"
+        android:title="Setting"
+        android:icon="@drawable/ic_setting"/>
+    <item
+
+        android:title="Folder"
+
+
+
+        ><menu>
+        <item
+            android:id="@+id/idFolderAdd"
+            android:title="Add folder"
+            android:icon="@drawable/ic_add_folder"/>
+        <item
+            android:id="@+id/idFolder"
+            android:title="Folder 1"
+            android:icon="@drawable/ic_folder"/>
+
+    </menu></item>
+
+    <item android:title="About">
+        <menu>
+        <item
+            android:id="@+id/id_about"
+            android:title="Information"
+        android:icon="@drawable/ic_baseline_info_24"
+        />
+        </menu>
+    </item>
+
+
+</menu>

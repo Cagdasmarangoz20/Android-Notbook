@@ -5,8 +5,10 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.SearchView
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.ViewModelProvider
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -22,17 +24,16 @@ import com.cagdasmarangoz.notes.database.NoteDatabase
 import com.cagdasmarangoz.notes.databinding.ActivityMainBinding
 import com.cagdasmarangoz.notes.model.NoteViewModal
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.navigation.NavigationView
 import java.util.*
-import kotlin.collections.ArrayList
+
 
 class MainActivity : ViewBindingActivity<ActivityMainBinding>(),
     NoteClickInterface,
     NoteClickDeleteInterface,
     SearchView.OnQueryTextListener {
-   private lateinit var notesRv: RecyclerView
-   private lateinit var addFAB: FloatingActionButton
-    lateinit var viewModel: NoteViewModal
 
+    lateinit var viewModel: NoteViewModal
     private lateinit var noteArrayList: ArrayList<NoteDatabase>
     private lateinit var darkModeData: DarkModeData
 
@@ -41,32 +42,31 @@ class MainActivity : ViewBindingActivity<ActivityMainBinding>(),
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setSupportActionBar(binding.toolbar)
 
 
         noteArrayList = arrayListOf<NoteDatabase>()
 
-
-        noteSetting()
-        notesRv = findViewById(R.id.idRVNotes)
-        addFAB = findViewById(R.id.idFABAddNote)
-        notesRv.layoutManager = LinearLayoutManager(this)
+        navigationMenu()
 
         val noteRVAdapter = NoteRVAdapter(this, this, this)
-        notesRv.adapter = noteRVAdapter
+        binding.idRVNotes.apply {
+            layoutManager = LinearLayoutManager(this@MainActivity)
+            adapter = noteRVAdapter
+        }
+
         viewModel = ViewModelProvider(
             this,
             ViewModelProvider.AndroidViewModelFactory.getInstance(application)
-        ).get(
-            NoteViewModal::class.java
-        )
+        )[NoteViewModal::class.java]
+
         viewModel.allNotes.observe(this) { list ->
             list?.let {
                 noteRVAdapter.updateList(it)
                 isSearching = false
             }
         }
-        addFAB.setOnClickListener {
+        binding.idFABAddNote.setOnClickListener {
             val intent = Intent(this@MainActivity, AddEditNoteActivity::class.java)
             startActivity(intent)
         }
@@ -83,7 +83,8 @@ class MainActivity : ViewBindingActivity<ActivityMainBinding>(),
 
     override fun onDeleteIconClick(note: Note) {
         viewModel.deleteNote(note)
-        Toast.makeText(this, getString(R.string.note_deleted,note.noteTitle), Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, getString(R.string.note_deleted, note.noteTitle), Toast.LENGTH_SHORT)
+            .show()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -96,11 +97,10 @@ class MainActivity : ViewBindingActivity<ActivityMainBinding>(),
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-    when(item.itemId){
-        R.id.idDarkTheme -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-        R.id.idLightTheme -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-    }
-
+        when (item.itemId) {
+            R.id.idDarkTheme -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            R.id.idLightTheme -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
 
         return super.onOptionsItemSelected(item)
     }
@@ -142,6 +142,41 @@ class MainActivity : ViewBindingActivity<ActivityMainBinding>(),
         }, 1000)
 
         return false
+    }
+
+
+    private fun navigationMenu() {
+
+        val navView: NavigationView = findViewById(R.id.idNavView)
+        val drawerLayout: DrawerLayout = findViewById(R.id.drawerLayout)
+        val toggle = ActionBarDrawerToggle(
+            this,
+            drawerLayout,
+            binding.toolbar,
+            R.string.open,
+            R.string.close
+        )
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+
+        navView.setNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.idHome -> {
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                }
+                R.id.idFolder ->{
+
+                }
+                R.id.idFolderAdd ->{
+
+                }
+                R.id.id_about ->{
+
+                }
+            }
+            true
+        }
     }
 
 

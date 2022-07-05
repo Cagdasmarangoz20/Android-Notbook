@@ -7,4 +7,7 @@
     <string name="NoteTitle">Not Başlığı</string>
     <string name="TimeStamp">Zaman</string>
     <string name="NoteDescription">Not Açıklaması</string>
+    <string name="open">aç</string>
+    <string name="close">kapat</string>
+
 </resources>
