@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
 import androidx.preference.PreferenceManager
@@ -28,10 +29,10 @@ class MainActivity : ViewBindingActivity<ActivityMainBinding>(),
     NoteClickInterface,
     NoteClickDeleteInterface,
     SearchView.OnQueryTextListener {
-    lateinit var notesRv: RecyclerView
-    lateinit var addFAB: FloatingActionButton
+   private lateinit var notesRv: RecyclerView
+   private lateinit var addFAB: FloatingActionButton
     lateinit var viewModel: NoteViewModal
-    private val myAdapter: NoteRVAdapter by lazy { NoteRVAdapter(this, this, this) }
+
     private lateinit var noteArrayList: ArrayList<NoteDatabase>
     private lateinit var darkModeData: DarkModeData
 
@@ -41,7 +42,7 @@ class MainActivity : ViewBindingActivity<ActivityMainBinding>(),
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+
 
         noteArrayList = arrayListOf<NoteDatabase>()
 
@@ -87,15 +88,18 @@ class MainActivity : ViewBindingActivity<ActivityMainBinding>(),
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_top, menu)
-        val item = menu?.findItem(R.id.idSearch)
-        var searchView = item?.actionView as? SearchView
+        val item = menu.findItem(R.id.idSearch)
+        val searchView = item?.actionView as? SearchView
 
         searchView?.setOnQueryTextListener(this)
         return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-
+    when(item.itemId){
+        R.id.idDarkTheme -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        R.id.idLightTheme -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+    }
 
 
         return super.onOptionsItemSelected(item)

@@ -9,6 +9,20 @@
         android:id="@+id/idSetting">
 
     </item>
+    <item android:title="Theme"
+        android:id="@+id/idTheme">
+        <menu>
+            <item android:title="dark theme"
+                android:id="@+id/idDarkTheme">
+
+            </item>
+            <item android:title="Light theme"
+                android:id="@+id/idLightTheme">
+
+            </item>
+
+        </menu>
+    </item>
    <item
        android:id="@+id/idSearch"
        android:title="Search"

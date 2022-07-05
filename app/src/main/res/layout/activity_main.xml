@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/balack_shadde_2"
+    android:background="@color/black_color2"
     android:layout_height="match_parent"
     tools:context=".view.MainActivity">
 
@@ -23,7 +23,7 @@
     android:src="@drawable/ic_add"
     app:tint="@color/white"
     android:layout_margin="20dp"
-    android:background="@color/balack_shadde_2"
+    android:background="@color/black_color2"
     android:layout_alignParentRight="true"/>
 
 </RelativeLayout>
