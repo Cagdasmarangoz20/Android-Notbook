@@ -2,30 +2,28 @@ package com.cagdasmarangoz.notes.view
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.AttributeSet
 import android.view.Menu
-import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.SearchView
-import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.ViewModelProvider
 import androidx.preference.PreferenceManager
+import androidx.recyclerview.widget.GridLayoutManager
+
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.cagdasmarangoz.notes.NoteClickDeleteInterface
-import com.cagdasmarangoz.notes.NoteClickInterface
-import com.cagdasmarangoz.notes.NoteRVAdapter
-import com.cagdasmarangoz.notes.R
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import androidx.recyclerview.widget.StaggeredGridLayoutManager.VERTICAL
+import com.cagdasmarangoz.notes.*
 import com.cagdasmarangoz.notes.core.ViewBindingActivity
 import com.cagdasmarangoz.notes.database.DarkModeData
 import com.cagdasmarangoz.notes.database.Note
 import com.cagdasmarangoz.notes.database.NoteDatabase
 import com.cagdasmarangoz.notes.databinding.ActivityMainBinding
 import com.cagdasmarangoz.notes.model.NoteViewModal
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.navigation.NavigationView
 import java.util.*
+import android.view.MenuItem as MenuItem1
 
 
 class MainActivity : ViewBindingActivity<ActivityMainBinding>(),
@@ -36,7 +34,7 @@ class MainActivity : ViewBindingActivity<ActivityMainBinding>(),
     lateinit var viewModel: NoteViewModal
     private lateinit var noteArrayList: ArrayList<NoteDatabase>
     private lateinit var darkModeData: DarkModeData
-
+    val noteRVAdapter = NoteRVAdapter(this, this, this)
     private var isSearching = false
     private var timer = Timer()
 
@@ -49,16 +47,21 @@ class MainActivity : ViewBindingActivity<ActivityMainBinding>(),
 
         navigationMenu()
 
-        val noteRVAdapter = NoteRVAdapter(this, this, this)
-        binding.idRVNotes.apply {
-            layoutManager = LinearLayoutManager(this@MainActivity)
-            adapter = noteRVAdapter
-        }
+
+
+    binding.idRVNotes.apply {
+
+        layoutManager = StaggeredGridLayoutManager(2, VERTICAL)
+        adapter = noteRVAdapter }
+
+
 
         viewModel = ViewModelProvider(
             this,
             ViewModelProvider.AndroidViewModelFactory.getInstance(application)
         )[NoteViewModal::class.java]
+
+
 
         viewModel.allNotes.observe(this) { list ->
             list?.let {
@@ -93,13 +96,30 @@ class MainActivity : ViewBindingActivity<ActivityMainBinding>(),
         val searchView = item?.actionView as? SearchView
 
         searchView?.setOnQueryTextListener(this)
+
         return super.onCreateOptionsMenu(menu)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+    override fun onOptionsItemSelected(item: MenuItem1): Boolean {
         when (item.itemId) {
             R.id.idDarkTheme -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             R.id.idLightTheme -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+          R.id.idList -> {
+
+              binding.idRVNotes.apply {
+
+                  layoutManager = LinearLayoutManager(this@MainActivity)
+                  adapter = noteRVAdapter
+              }
+          }
+            R.id.idGrid -> {
+
+                binding.idRVNotes.apply {
+
+                    layoutManager = GridLayoutManager(this@MainActivity,2)
+                    adapter = noteRVAdapter
+                }
+            }
         }
 
         return super.onOptionsItemSelected(item)
@@ -145,10 +165,10 @@ class MainActivity : ViewBindingActivity<ActivityMainBinding>(),
     }
 
 
-    private fun navigationMenu() {
+    fun navigationMenu() {
 
-        val navView: NavigationView = findViewById(R.id.idNavView)
-        val drawerLayout: DrawerLayout = findViewById(R.id.drawerLayout)
+        val navView= binding.idNavView
+        val drawerLayout = binding.drawerLayout
         val toggle = ActionBarDrawerToggle(
             this,
             drawerLayout,
@@ -165,14 +185,10 @@ class MainActivity : ViewBindingActivity<ActivityMainBinding>(),
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                 }
-                R.id.idFolder ->{
 
-                }
-                R.id.idFolderAdd ->{
-
-                }
                 R.id.id_about ->{
-
+                    val intent = Intent(this, AboutActivity::class.java)
+                    startActivity(intent)
                 }
             }
             true

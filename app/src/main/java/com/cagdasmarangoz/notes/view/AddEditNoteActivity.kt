@@ -22,6 +22,7 @@ class AddEditNoteActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_edit_note)
+
         noteTitleEdt = findViewById(R.id.idEdtNoteTitle)
         noteDescriptionEdt = findViewById(R.id.idEdtNoteDescription)
         addUpdateBtn = findViewById(R.id.idBtnAddUpdate)
@@ -65,4 +66,5 @@ class AddEditNoteActivity : AppCompatActivity() {
             this.finish()
         }
     }
+
 }

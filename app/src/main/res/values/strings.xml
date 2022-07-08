@@ -2,13 +2,26 @@
     <string name="app_name">notes</string>
     <string name="title_activity_settings">SettingsActivity</string>
 
- <string name="setting">Setting</string>
+    <string name="setting">Setting</string>
     <string name="Dark">Dark Mode</string>
+    <string name="light">Light Mode</string>
+    <string name="view">View</string>
+    <string name="grid">Grid Mode</string>
+    <string name="list">List Mode</string>
+    <string name="theme">Theme</string>
     <string name="NoteTitle">Note Title</string>
     <string name="TimeStamp">time</string>
     <string name="NoteDescription">Note Description</string>
     <string name="open">open</string>
     <string name="close">close</string>
     <string name="note_deleted">%1$s Deleted</string>
+    <string name="folder">Folder</string>
+    <string name="add_note">Add Note</string>
+    <string name="upload">Upload</string>
+    <string name="home">Home</string>
+    <string name="about">About</string>
+    <string name="information">Information</string>
+    <string name="notbook">Notbook</string>
+
 
 </resources>

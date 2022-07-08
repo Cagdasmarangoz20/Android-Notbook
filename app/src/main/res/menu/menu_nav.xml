@@ -5,35 +5,18 @@
     >
     <item
         android:id="@+id/idHome"
-        android:title="Home"
+        android:title="@string/home"
         android:icon="@drawable/ic_home"/>
-    <item
-        android:id="@+id/idSetting"
-        android:title="Setting"
-        android:icon="@drawable/ic_setting"/>
-    <item
-
-        android:title="Folder"
 
 
 
-        ><menu>
-        <item
-            android:id="@+id/idFolderAdd"
-            android:title="Add folder"
-            android:icon="@drawable/ic_add_folder"/>
-        <item
-            android:id="@+id/idFolder"
-            android:title="Folder 1"
-            android:icon="@drawable/ic_folder"/>
 
-    </menu></item>
 
-    <item android:title="About">
+    <item android:title="@string/about">
         <menu>
         <item
             android:id="@+id/id_about"
-            android:title="Information"
+            android:title="@string/information"
         android:icon="@drawable/ic_baseline_info_24"
         />
         </menu>

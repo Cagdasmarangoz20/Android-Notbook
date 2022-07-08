@@ -5,18 +5,28 @@
 
 
     <item
-        android:title="Setting"
+        android:title="@string/view"
         android:id="@+id/idSetting">
+        <menu>
+            <item android:title="@string/list"
+                android:id="@+id/idList">
+
+            </item>
+            <item android:title="@string/grid"
+                android:id="@+id/idGrid">
+
+            </item>
+        </menu>
 
     </item>
-    <item android:title="Theme"
+    <item android:title="@string/theme"
         android:id="@+id/idTheme">
         <menu>
-            <item android:title="dark theme"
+            <item android:title="@string/Dark"
                 android:id="@+id/idDarkTheme">
 
             </item>
-            <item android:title="Light theme"
+            <item android:title="@string/light"
                 android:id="@+id/idLightTheme">
 
             </item>

@@ -9,5 +9,19 @@
     <string name="NoteDescription">Not Açıklaması</string>
     <string name="open">aç</string>
     <string name="close">kapat</string>
+    <string name="folder">Klasör</string>
+    <string name="add_note">Not Ekle</string>
+    <string name="upload">Güncelle</string>
+    <string name="light">Açık Mod</string>
+    <string name="view">Görünüm</string>
+    <string name="grid">Izgara mod</string>
+    <string name="list">Liste mod</string>
+    <string name="theme">Tema</string>
+    <string name="title_activity_settings">Ayarlar Activite</string>
+    <string name="home">Ev</string>
+    <string name="about">Bilgi</string>
+    <string name="information">Hakkında</string>
+    <string name="notbook">Not Defteri</string>
+
 
 </resources>
