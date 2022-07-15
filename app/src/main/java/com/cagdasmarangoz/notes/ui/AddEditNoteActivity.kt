@@ -1,4 +1,4 @@
-package com.cagdasmarangoz.notes.view
+package com.cagdasmarangoz.notes.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,7 +8,6 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.cagdasmarangoz.notes.database.Note
-import com.cagdasmarangoz.notes.model.NoteViewModal
 import com.cagdasmarangoz.notes.R
 import java.text.SimpleDateFormat
 import java.util.*

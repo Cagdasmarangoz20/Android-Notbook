@@ -1,4 +1,4 @@
-package com.cagdasmarangoz.notes.model
+package com.cagdasmarangoz.notes.ui
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -17,7 +17,6 @@ class NoteViewModal(application: Application) : AndroidViewModel(application) {
 
     private val _allNotes = MutableLiveData<List<Note>>()
     val allNotes: LiveData<List<Note>> get() = _allNotes
-
 
     val repository: NoteRepository
 
@@ -45,6 +44,12 @@ class NoteViewModal(application: Application) : AndroidViewModel(application) {
     fun searchDatabase(searchQuery: String) {
         viewModelScope.launch {
             _allNotes.value = repository.searchDatabase(searchQuery)
+        }
+    }
+
+    fun refresh() {
+        viewModelScope.launch{
+            _allNotes.value = repository.getAll()
         }
     }
 }

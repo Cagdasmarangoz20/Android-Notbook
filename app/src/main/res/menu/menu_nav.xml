@@ -1,24 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:showIn="navigation_view"
-    >
+    tools:showIn="navigation_view">
     <item
-        android:id="@+id/idHome"
-        android:title="@string/home"
-        android:icon="@drawable/ic_home"/>
-
-
-
+        android:id="@+id/homeFragment"
+        android:icon="@drawable/ic_home"
+        android:title="@string/home" />
 
 
     <item android:title="@string/about">
         <menu>
-        <item
-            android:id="@+id/id_about"
-            android:title="@string/information"
-        android:icon="@drawable/ic_baseline_info_24"
-        />
+            <item
+                android:id="@+id/aboutFragment"
+                android:icon="@drawable/ic_baseline_info_24"
+                android:title="@string/information" />
         </menu>
     </item>
 

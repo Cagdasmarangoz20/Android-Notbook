@@ -2,58 +2,44 @@
 <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/drawerLayout"
     android:orientation="vertical"
-    tools:context=".view.MainActivity"
+    tools:context=".ui.MainActivity"
     tools:openDrawer="end">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/black_color2">
+        android:background="@color/black_color2"
+        android:orientation="vertical">
 
-      <LinearLayout
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:orientation="vertical">
-
-          <com.google.android.material.appbar.MaterialToolbar
-              android:id="@+id/toolbar"
-              android:layout_width="match_parent"
-              app:title="@string/app_name"
-              app:titleCentered="true"
-              android:background="?attr/colorPrimary"
-              android:layout_height="wrap_content"/>
-
-          <androidx.recyclerview.widget.RecyclerView
-              android:id="@+id/idRVNotes"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              tools:listitem="@layout/note_rv_item" />
-      </LinearLayout>
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/idFABAddNote"
-            android:layout_width="wrap_content"
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_margin="20dp"
-            android:background="@color/black_color2"
-            android:src="@drawable/ic_add"
-            app:tint="@color/white" />
+            android:background="?attr/colorPrimary"
+            app:title="@string/app_name"
+            app:titleCentered="true" />
 
-    </RelativeLayout>
+        <fragment
+            android:id="@+id/nav_host_fragment"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/nav_graph" />
+
+    </LinearLayout>
 
     <com.google.android.material.navigation.NavigationView
-        android:id="@+id/idNavView"
+        android:id="@+id/navView"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        android:fitsSystemWindows="true"
         app:headerLayout="@layout/menu_nav_header"
-        app:menu="@menu/menu_nav"
-        android:fitsSystemWindows="true"/>
+        app:menu="@menu/menu_nav" />
 </androidx.drawerlayout.widget.DrawerLayout>
