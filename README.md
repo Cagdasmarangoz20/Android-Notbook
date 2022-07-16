@@ -18,4 +18,8 @@ Save and access your notes in our daily life quickly and easily.
 
 # Screenshots
 
-<img src="[https://raw.githubusercontent.com/ramazanogunc/The-Holy-Quran-Translation/develop/ss/1.png](https://user-images.githubusercontent.com/108685142/179214151-986f2b43-7ff7-4553-ade1-07ac063efe49.PNG)" width="210"  alt="Android-notbook-1"/><img src="[https://raw.githubusercontent.com/ramazanogunc/The-Holy-Quran-Translation/develop/ss/1.png](https://user-images.githubusercontent.com/108685142/179214162-5364478c-19d3-4564-a875-6a71d6fc5807.PNG)" width="210"  alt="Android-notbook-1"/><img src="[https://raw.githubusercontent.com/ramazanogunc/The-Holy-Quran-Translation/develop/ss/1.png](https://user-images.githubusercontent.com/108685142/179214166-c50cd3b6-f517-4f56-9fd7-e56e4cb1f0c8.PNG)" width="210"  alt="Android-notbook-1/>
+<img src="https://user-images.githubusercontent.com/108685142/179348664-d93aa177-abe3-4ab8-99e4-84e31ad23456.PNG" width="250"  alt="Android-notbook-1"/> <img src="https://user-images.githubusercontent.com/108685142/179348740-5337e043-459d-4eb3-aa14-43da76d564f5.PNG" width="250"  alt="Android-notbook-1"/> <img src="https://user-images.githubusercontent.com/108685142/179348739-693f4896-665c-4786-8d13-450a24e1bfb7.PNG" width="250"  alt="Android-notbook-1"/>
+
+
+
+
